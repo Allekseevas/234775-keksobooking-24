@@ -70,7 +70,7 @@ function main() {
   };
 }
 
-function getData (numberOfRows = 10){
+function getData(numberOfRows = 10){
   const result = [];
   for(let i=0;i<numberOfRows; i++){
     result.push(main());
@@ -78,3 +78,4 @@ function getData (numberOfRows = 10){
   }
   return result;
 }
+getData();
