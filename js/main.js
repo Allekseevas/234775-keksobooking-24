@@ -1,27 +1,25 @@
 function getRandomInt(min, max) {
   if(min>=max){
-    console.error('min not max');
     return false;
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-//console.log(getRandomInt(10,20));
+
 
 function getRandomFloat(min, max, number) {
   if(min>=max){
-    console.error('min not max');
     return false;
   }
   return ((Math.random() * (max - min + 1)) + min).toFixed(number);
 }
-//console.log(getRandomFloat(25,50, 6));
+
 
 let counter = 0;
 function getAuthor() {
-  const numberExpression = counter < 10 ? '0' + counter : counter;
+  const numberExpression = counter < 10 ? `0${  counter}` : counter;
   counter++;
   return {
-    avatar: 'img/avatars/user' + numberExpression + '.png',
+    avatar: `img/avatars/user${  numberExpression  }.png`,
   };
 
 }
