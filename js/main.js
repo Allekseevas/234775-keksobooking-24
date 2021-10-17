@@ -14,10 +14,9 @@ function getRandomFloat(min, max, number) {
 }
 
 
-let counter = 0;
-function getAuthor() {
-  const numberExpression = counter < 10 ? `0${  counter}` : counter;
-  counter++;
+function getAuthor(counter) {
+  const numberExpression = counter < 10 ? `0${counter}` : counter;
+
   return {
     avatar: `img/avatars/user${  numberExpression  }.png`,
   };
@@ -47,12 +46,16 @@ function getPhotos(){
   const random = getRandomInt(1, randomPhotos.length);
   return randomPhotos.slice(0, random);
 }
-function main() {
+function main(i) {
+  const location =  {
+    lat: getRandomFloat(35.65000, 35.70000, 5),
+    lng: getRandomFloat(139.70000, 139.80000, 5),
+  };
   return {
-    author: getAuthor(),
+    author: getAuthor(i),
     offer: {
       title: 'Привет!',
-      address: '{{location.lat}}, {{location.lng}}',
+      address: `${location.lat}, ${location.lng}`,
       price: getRandomInt(1, 99),
       type: getType(),
       rooms: getRandomInt(1,10),
@@ -63,17 +66,14 @@ function main() {
       description: 'Пока!',
       photos: getPhotos(),
     },
-    location: {
-      lat: getRandomFloat(35.65000, 35.70000, 5),
-      lng: getRandomFloat(139.70000, 139.80000, 5),
-    },
+    location,
   };
 }
 
 function getData(numberOfRows = 10){
   const result = [];
-  for(let i=0;i<numberOfRows; i++){
-    result.push(main());
+  for(let i=1;i<=numberOfRows; i++){
+    result.push(main(i));
 
   }
   return result;
